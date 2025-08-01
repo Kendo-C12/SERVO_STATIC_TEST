@@ -1,3 +1,6 @@
 Before deployment   180 degrees
-After  deployment   0   degrees
+After  deployment   0   degrees -> Apogee (1 kilometer)
 
+==============================================================
+
+Apogee = จุดสูงสุดที่ขึ้นไปได้
