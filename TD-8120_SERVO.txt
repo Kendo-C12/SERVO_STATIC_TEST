@@ -1,0 +1,13 @@
+TD-8120 servo
+
+    Operating Voltage:4.8V - 6.6V
+
+    Torque:18.5kg-cm - 21.8kg-cm
+
+    Speed: 0.18ces/60° - 0.14ces/60°
+
+    Dimensions: 40mm x 20mm x 40.5mm
+
+    Weight: 65G
+
+    
