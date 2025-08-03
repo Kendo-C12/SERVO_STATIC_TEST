@@ -16,3 +16,9 @@ h1 {
   background: white;
   border-radius: 8px;
 }
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  max-width: 90%;
+}

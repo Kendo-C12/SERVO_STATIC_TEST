@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Static test</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>🔷 Arduino UNO Status Dashboard</h1>
   <div id="content">
     <p>ข้อมูลจะปรากฏที่นี่ (ยังไม่มีการเชื่อมต่อ)</p>
   </div>
+
+  <canvas id="dataChart" width="600" height="300"></canvas>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 

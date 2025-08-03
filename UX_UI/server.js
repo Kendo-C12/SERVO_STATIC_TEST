@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ===== Serial Port Setup =====
 // ✅ เปลี่ยน COM3 เป็นพอร์ตจริงของ Arduino
-const serial = new SerialPort({ path: 'COM3', baudRate: 115200 });
+const serial = new SerialPort({ path: 'COM13', baudRate: 115200 });
 const parser = serial.pipe(new ReadlineParser({ delimiter: '\n' }));
 
 const sqlite3 = require('sqlite3').verbose();
@@ -45,12 +45,12 @@ parser.on('data', (line) => {
 
   // ตรวจว่ามีครบ 3 ค่า
   if (parts.length === 3) {
-    const [temperature, humidity, light] = parts;
+    const [time, height, deploy_yet] = parts;
 
     // บันทึกลงฐานข้อมูล
     db.run(
-      `INSERT INTO sensor (temperature, humidity, light) VALUES (?, ?, ?)`,
-      [parseFloat(temperature), parseInt(humidity), parseInt(light)],
+      `INSERT INTO sensor (time, height, deploy_yet) VALUES (?, ?, ?)`,
+      [time, parseInt(height), deploy_yet === 'true'],
       (err) => {
         if (err) {
           console.error('❌ DB Error:', err.message);
@@ -63,6 +63,11 @@ parser.on('data', (line) => {
 
   // ส่งข้อมูลให้หน้าเว็บด้วย
   io.emit('serial-data', trimmed);
+
+  document.getElementById('output').textContent = line;
+
+  const value = parts[0]; // ดึงค่าแรก เช่น "25.3"
+  updateGraph(value);
 });
 
 
