@@ -13,7 +13,7 @@ TickType_t start;
 int currentTime; // ตัวแปรเก็บเวลาเริ่มต้นและเวลาปัจจุบัน (มิลลิวินาที)
 
 // ฟังก์ชัน
-extern void count_height();
+extern void monitor_test();
 extern void deploy();
 extern void Serial_read();
 
@@ -35,7 +35,7 @@ void loop() {
 
 // Function
 
-void count_height() {
+void monitor_test() {
   // เพิ่มความสูง 100 เมตรทุก 1 วินาที
   start = xTaskGetTickCount();
   
@@ -45,7 +45,11 @@ void count_height() {
 
   if(height >= 1000) { // ถ้าความสูงถึง 1000 เมตร
     Serial.println("Apogee reached at " + String(height) + " meters.");
+    Serial.println("Deploying parachute...");
+    Serial.println("Parachute deployed at " + String(height) + " meters.\tTime: " + String(times) + " seconds.");
+    Serial.println("Servo moved to 0 degrees for deployment.");
     deploy(); // เรียกใช้ฟังก์ชัน deploy() เพื่อเริ่มการปล่อย
+    Serial.println("Deployment complete.");
   }
 
   // คำนวณเวลาที่เหลือในวินาที
@@ -60,15 +64,8 @@ void count_height() {
 }
 
 void deploy() {
-  Serial.println("Deploying parachute...");
-  Serial.println("Parachute deployed at " + String(height) + " meters.\tTime: " + String(times) + " seconds.");
-
   myServo.write(0); // หมุน servo ไปยังองศา 0 เพื่อปล่อยพาราชูต
-  Serial.println("Servo moved to 0 degrees for deployment.");
-
-  // หน่วงเวลาเพื่อให้ servo หมุนเสร็จ
-  vTaskDelay(pdMS_TO_TICKS(2000)); // หน่วงเวลา 2 วินาที
-  Serial.println("Deployment complete.");
+  delay(553); // หน่วงเวลา 553 มิลลิวินาทีเพื่อให้แน่ใจว่า servo หมุนเสร็จ
 }
 
 void Serial_read() {
