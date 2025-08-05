@@ -16,7 +16,7 @@ extern void printStatus(void *);
 // extern void deploy();
 
 void setup() {
-  Serial.begin(115200);     
+  Serial.begin(9600);     
 
   height = 0; 
 

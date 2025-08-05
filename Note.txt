@@ -72,8 +72,6 @@ Dynamic     ABS
 
 ค่าที่แสดงหน้าเว็บ
 
-    time
-    height
-    velocity
-    accleration
-    deploy_yet
+time,height,velocity,accleration,prediction_height,deploy_yet
+
+==============================================================

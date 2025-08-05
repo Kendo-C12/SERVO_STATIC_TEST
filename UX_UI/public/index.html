@@ -11,13 +11,17 @@
 <body>
   <h1>🔷 Arduino UNO Status Dashboard</h1>
   <div id="content">
-    <p>ข้อมูลจะปรากฏที่นี่ (ยังไม่มีการเชื่อมต่อ)</p>
+    <div id="output">ข้อมูลจะปรากฏที่นี่ (ยังไม่มีการเชื่อมต่อ)</div>
   </div>
 
-  <canvas id="dataChart" width="600" height="300"></canvas>
+  <button id="rotateBtn">หมุน (Rotate)</button>
+
+
+  <canvas id="heightChart" width="600" height="200"></canvas>
+  <canvas id="velocityChart" width="600" height="200"></canvas>
+  <canvas id="accelerationChart" width="600" height="200"></canvas>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
